@@ -1,17 +1,22 @@
-# Import SQLite3
+# Using the INSERT command
+
+# Import the SQLite3 library
 import sqlite3
 
-#create a database connection called "cars"
-conn = sqlite3.connect("cars.db")
+# Create the connection object
+conn = sqlite3.connect("new.db")
 
-#Create the cursor to execute commands
+# Make a cursor object to execute SQL commands
 cursor = conn.cursor()
 
-#create a table/query called inventory that includes "make, model and quantity"
-#use the cursor to execute this!
-cursor.execute("""CREATE TABLE inventory
-               (Make TEXT, Model TEXT, Quantity INT)
-               """)
+# Insert Data
+cursor.execute("INSERT INTO population VALUES('New York City', \
+               'NY', 8400000)")
+cursor.execute("INSERT INTO population VALUES('San Francisco', \
+               'CA', 800000)")
 
-#close the connection
+# Commit the changes
+conn.commit()
+
+# Close the connection
 conn.close()
